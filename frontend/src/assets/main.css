@@ -1,15 +1,22 @@
-/* src/assets/main.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Style untuk animasi scroll yang akan kita pakai nanti */
 .before-enter {
-opacity: 0;
-transform: translateY(100px);
-transition: all 1s ease-out;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s ease-out;
 }
+
 .enter {
-opacity: 1;
-transform: translateY(0px);
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* Menambahkan beberapa style dasar */
+body {
+  @apply bg-brand-bg text-brand-text;
 }

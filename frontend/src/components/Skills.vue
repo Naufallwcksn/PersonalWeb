@@ -8,18 +8,23 @@ try { const response = await axios.get('http://localhost:3000/api/skills'); skil
 } catch (error) { console.error(error); }
 });
 </script>
-<template>
-<section id="skill" class="py-20 bg-gray-50">
-<div class="container mx-auto px-6">
-<SectionTitle title="Keahlian & Teknologi" />
-<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-<div v-for="skill in skills" :key="skill.name" class="bg-white p-6 rounded-lg shadow-lg text-center
-transform hover:-translate-y-2 transition-transform duration-300">
-<h3 class="text-xl font-bold text-gray-800">{{ skill.name }}</h3>
-<p class="text-gray-500 mt-2">{{ skill.level }}</p>
 
-</div>
-</div>
-</div>
-</section>
+<template>
+  <section id="skills" class="container mx-auto px-8 md:px-16 py-24">
+    <!-- Menambahkan judul untuk bagian ini -->
+    <div class="text-center mb-12">
+      <SectionTitle title="My Skills" subtitle="SERVICES" />
+    </div>
+    <div class="mt-12 grid md:grid-cols-2 gap-8">
+      <div v-for="skill in skills" :key="skill.name" class="bg-brand-bg-light p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-center justify-between">
+          <h3 class="text-2xl font-bold text-brand-text">{{ skill.name }}</h3>
+          <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+            <span class="text-2xl font-bold text-brand-primary">+</span>
+          </div>
+        </div>
+        <p class="text-brand-subtext mt-4">{{ skill.description }}</p>
+      </div>
+    </div>
+  </section>
 </template>

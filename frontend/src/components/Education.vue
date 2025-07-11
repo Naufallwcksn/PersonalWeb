@@ -2,44 +2,50 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import SectionTitle from './SectionTitle.vue';
-const educationHistory = ref([]);
+
+// State untuk menyimpan data riwayat pendidikan
+const education = ref([]);
+
+// Mengambil data dari backend saat komponen dimuat
 onMounted(async () => {
-try { const response = await axios.get('http://localhost:3000/api/education'); educationHistory.value
-= response.data; } catch (error) { console.error(error); }
+  try {
+    // Pastikan URL ini sesuai dengan alamat backend Anda
+    const response = await axios.get('http://localhost:3000/api/education');
+    education.value = response.data;
+  } catch (error) {
+    console.error('Gagal mengambil data riwayat pendidikan:', error);
+  }
 });
 </script>
+
 <template>
-<section id="pendidikan" class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<SectionTitle title="Riwayat Pendidikan" />
-<div class="relative">
-<div class="absolute h-full border-r-2 border-gray-300" style="left: 50%;"></div>
-<div v-for="(edu, index) in educationHistory" :key="edu.id" class="mb-8 flex justify-between
-items-center w-full">
-<div v-if="index % 2 === 0" class="w-full flex">
-<div class="w-1/2 pr-8 text-right"><p class="font-semibold text-blue-600">{{ edu.period
+  <section id="education" class="container mx-auto px-8 md:px-16 py-24 flex flex-col md:flex-row items-center gap-16">
+    <!-- Gambar di Kiri -->
+    <div class="md:w-1/2 flex justify-center">
+       <div class="bg-brand-bg-light p-3 rounded-3xl shadow-lg transform rotate-3">
+        <!-- Ganti src dengan path gambar profil Anda -->
+        <img src="../assets/foto/foto2.jpg" alt="Foto Profil" class="rounded-2xl w-80">
+      </div>
+    </div>
 
-}}</p><h3 class="text-2xl font-bold text-gray-800">{{ edu.institution }}</h3><p class="text-gray-
-600">{{ edu.major }}</p></div>
+    <!-- Konten Teks di Kanan -->
+    <div class="md:w-1/2 space-y-6">
+      <SectionTitle title="About Me" />
+      <p class="text-brand-subtext">
+        My enthusiasm lies at the intersection of code, data, and artificial intelligence to create useful technology.
+      </p>
 
-<div class="w-1/2 flex justify-start"><div class="w-4 h-4 bg-blue-600 rounded-full z-
-10"></div></div>
-
-</div>
-
-<div v-else class="w-full flex">
-
-<div class="w-1/2 flex justify-end"><div class="w-4 h-4 bg-blue-600 rounded-full z-
-10"></div></div>
-
-<div class="w-1/2 pl-8 text-left"><p class="font-semibold text-blue-600">{{ edu.period
-
-}}</p><h3 class="text-2xl font-bold text-gray-800">{{ edu.institution }}</h3><p class="text-gray-
-600">{{ edu.major }}</p></div>
-
-</div>
-</div>
-</div>
-</div>
-</section>
+      <!-- Bagian Riwayat Pendidikan -->
+      <div>
+        <h3 class="text-2xl font-bold text-brand-text mb-4 mt-6">Education History</h3>
+        <div class="space-y-4">
+          <div v-for="edu in education" :key="edu.id" class="bg-brand-bg-light p-4 rounded-lg shadow-sm border-l-4 border-brand-primary">
+            <p class="font-bold text-brand-text text-lg">{{ edu.institution }}</p>
+            <p class="text-brand-subtext">{{ edu.major }}</p>
+            <p class="text-brand-primary font-semibold text-sm mt-1">{{ edu.period }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
