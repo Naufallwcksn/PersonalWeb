@@ -10,7 +10,7 @@ const education = ref([]);
 onMounted(async () => {
   try {
     // Pastikan URL ini sesuai dengan alamat backend Anda
-    const response = await axios.get('http://localhost:3000/api/education');
+    const response = await axios.get('/api/education');
     education.value = response.data;
   } catch (error) {
     console.error('Gagal mengambil data riwayat pendidikan:', error);
