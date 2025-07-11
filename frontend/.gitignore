@@ -1,3 +1,21 @@
+# Dependencies
+/node_modules
+
+# Lockfiles - PENTING untuk Vercel
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build Output
+/dist
+/dist-ssr
+
+# Environment Variables - PENTING untuk keamanan
+.env
+.env.*
+!/.env.example
+*.local
+
 # Logs
 logs
 *.log
@@ -7,24 +25,21 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-.DS_Store
-dist
-dist-ssr
-coverage
-*.local
-
+# Test & Coverage Output
+/coverage
 /cypress/videos/
 /cypress/screenshots/
+*.tsbuildinfo
 
-# Editor directories and files
+# IDE & Editor Directories
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 *.suo
-*.ntvs*
+.ntvs
 *.njsproj
 *.sln
 *.sw?
 
-*.tsbuildinfo
+# OS Files
+.DS_Store
