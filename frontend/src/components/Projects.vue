@@ -1,20 +1,13 @@
 <script setup>
 import SectionTitle from './SectionTitle.vue';
-
-const getImageUrl = (path) => {
-  try {
-    return new URL(path, import.meta.url).href;
-  } catch (e) {
-    console.error(e);
-    return '';
-  }
-};
+import airQualityImage from '../assets/foto/Screenshot 2025-07-02 070203.png';
+import topupinnImage from '../assets/foto/Topupinn.png';
 
 const aiProjects = [
   {
     title: 'Air Quality Predicted',
     category: 'Machine Learning Model',
-    image: getImageUrl('../assets/foto/Screenshot 2025-07-02 070203.png'),
+    image: airQualityImage,
     link: 'https://airqualitypredicted.streamlit.app'
   },
   // Tambahkan proyek AI/ML lainnya di sini
@@ -24,7 +17,7 @@ const otherProjects = [
   {
     title: 'Topupin',
     category: 'Website',
-    image: getImageUrl('../assets/foto/Topupinn.png')
+    image: topupinnImage
   }
 ];
 </script>
