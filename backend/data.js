@@ -1,8 +1,10 @@
+
 const education = [
-    { id: 1, period: '2023 - Sekarang', institution: 'Universitas AMIKOM Yogyakarta', major: 'S1 - Informatika', achievements: ['IPK 3.91/4.0'] },
+    { id: 1, period: '2023 - Sekarang', institution: 'Universitas AMIKOM Yogyakarta', major: 'S1 - Informatika', achievements: ['IPK 3.93/4.0', 'Juara 2 Hackathon AMICTA 2025'] },
     { id: 2, period: '2020 - 2023', institution: 'SMA Negeri 9 Yogyakarta', major: 'Jurusan MIPA', achievements: [] },
     { id: 3, period: '2017 - 2020', institution: 'SMP Negeri 6 Yogyakarta', achievements: ['Juara 2 Robot Sumo 3kg'] }
 ];
+
 const skills = [
   { name: 'Python', description: 'A versatile programming language that is the industry standard for AI, Machine Learning, and data analysis, known for its simple syntax and rich ecosystem of libraries.' },
   { name: 'Scikit-learn', description: 'A fundamental Machine Learning library for Python that provides a wide range of algorithms for classification, regression, clustering, and tools for model evaluation.' },
@@ -12,9 +14,37 @@ const skills = [
   { name: 'Pandas', description: 'An essential library for data manipulation and analysis, providing powerful data structures like the DataFrame to clean, transform, and analyze structured data.' },
   { name: 'Tailwind CSS', description: 'A modern, utility-first CSS framework that enables rapid development of custom user interfaces directly within your HTML markup.' },
 ];
+
+
 const projects = [
-    { id: 1, title: 'E-Commerce Platform', description: 'Platform marketplace lengkap dengan fitur shopping cart, payment gateway, dan admin dashboard.', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop', technologies: ['Vue.js', 'Node.js', 'PostgreSQL', 'Stripe'], status: 'Selesai', demoLink: '#', codeLink: '#' },
-    { id: 2, title: 'Task Management App', description: 'Aplikasi manajemen tugas dengan fitur real-time collaboration dan progress tracking.', image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop', technologies: ['React', 'Firebase', 'Material-UI'], status: 'In Progress', demoLink: '#', codeLink: '#' },
-    { id: 3, title: 'Weather Forecast App', description: 'Aplikasi ramalan cuaca dengan visualisasi data yang menarik dan responsive design.', image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop', technologies: ['JavaScript', 'Chart.js', 'OpenWeather API'], status: 'Selesai', demoLink: '#', codeLink: '#' }
+  {
+    id: 'ai-1',
+    title: 'Air Quality Predicted',
+    category: 'Machine Learning Model',
+    imageName: 'Screenshot 2025-07-02 070203.png', // Hanya nama file
+    link: 'https://airqualitypredicted.streamlit.app',
+    isAi: true // Penanda untuk memisahkan kategori
+  },
+  {
+    id: 'other-1',
+    title: 'Topupin',
+    category: 'Website',
+    imageName: 'Topupinn.png', // Hanya nama file
+    link: null, // Atau link jika ada
+    isAi: false
+  },
+  {
+    id: 'other-2',
+    title: 'Sinergia',
+    category: 'Website',
+    imageName: 'sinergia.png', // Hanya nama file
+    link: null,
+    isAi: false
+  }
+  // Tambahkan proyek baru Anda di sini
 ];
+// --------------------
+
+
+
 module.exports = { education, skills, projects };

@@ -1,37 +1,50 @@
 <script setup>
+import { ref, onMounted, computed } from 'vue'; // Tambahkan computed
+import axios from 'axios'; // Tambahkan axios
 import SectionTitle from './SectionTitle.vue';
-import airQualityImage from '../assets/foto/Screenshot 2025-07-02 070203.png';
-import topupinnImage from '../assets/foto/Topupinn.png';
 
-const aiProjects = [
-  {
-    title: 'Air Quality Predicted',
-    category: 'Machine Learning Model',
-    image: airQualityImage,
-    link: 'https://airqualitypredicted.streamlit.app'
-  },
-  // Tambahkan proyek AI/ML lainnya di sini
-];
+// HAPUS import gambar statis
+// HAPUS const aiProjects = [...]
+// HAPUS const otherProjects = [...]
 
-const otherProjects = [
-  {
-    title: 'Topupin',
-    category: 'Website',
-    image: topupinnImage
+// State untuk menampung semua proyek dari API
+const allProjects = ref([]);
+
+// Mengambil data dari backend
+onMounted(async () => {
+  try {
+    const response = await axios.get('/api/projects');
+    allProjects.value = response.data;
+  } catch (error) {
+    console.error('Gagal mengambil data proyek:', error);
   }
-];
+});
+
+// Gunakan 'computed' untuk memisahkan proyek secara dinamis
+const aiProjects = computed(() =>
+  allProjects.value.filter(p => p.isAi)
+);
+
+const otherProjects = computed(() =>
+  allProjects.value.filter(p => !p.isAi)
+);
+
+// Fungsi untuk mendapatkan path gambar (penting untuk Vite)
+const getImagePath = (imageName) => {
+  // Ini mencocokkan cara Education.vue memuat gambar
+  return new URL(`../assets/foto/${imageName}`, import.meta.url).href;
+};
 </script>
 
 <template>
   <section id="projects" class="container mx-auto px-8 md:px-16 py-24">
 
-    <!-- Bagian Proyek AI/ML -->
     <div class="mb-20">
       <div class="text-center mb-12">
         <SectionTitle title="AI/ML Projects" subtitle="My Main Focus" />
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div v-for="project in aiProjects" :key="project.title">
+        <div v-for="project in aiProjects" :key="project.id">
           <a
             :href="project.link"
             target="_blank"
@@ -39,7 +52,7 @@ const otherProjects = [
             class="block bg-brand-bg-light rounded-lg shadow-sm overflow-hidden group"
           >
             <div class="overflow-hidden">
-              <img :src="project.image" :alt="project.title" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <img :src="getImagePath(project.imageName)" :alt="project.title" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
             </div>
             <div class="p-6">
               <p class="text-brand-primary text-sm font-semibold">{{ project.category }}</p>
@@ -50,15 +63,14 @@ const otherProjects = [
       </div>
     </div>
 
-    <!-- Bagian Proyek Lainnya -->
     <div>
       <div class="text-center mb-12">
         <SectionTitle title="Other Projects" subtitle="More to Explore" />
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div v-for="project in otherProjects" :key="project.title" class="bg-brand-bg-light rounded-lg shadow-sm overflow-hidden group">
+        <div v-for="project in otherProjects" :key="project.id" class="bg-brand-bg-light rounded-lg shadow-sm overflow-hidden group">
           <div class="overflow-hidden">
-            <img :src="project.image" :alt="project.title" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
+             <img :src="getImagePath(project.imageName)" :alt="project.title" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
           </div>
           <div class="p-6">
             <p class="text-brand-primary text-sm font-semibold">{{ project.category }}</p>
@@ -67,6 +79,5 @@ const otherProjects = [
         </div>
       </div>
     </div>
-
   </section>
 </template>
