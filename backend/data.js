@@ -40,7 +40,31 @@ const projects = [
     imageName: 'sinergia.png', // Hanya nama file
     link: null,
     isAi: false
-  }
+  },
+  {
+    id: 'ai-2',
+    title: 'Flight Delay Prediction',
+    category: 'Machine Learning Model',
+    imageName: 'image.png', // Hanya nama file
+    link: 'https://colab.research.google.com/drive/1qs4nf3cY_Gl8FPl6YjKQ7ygIye_MVM8R?usp=sharing',
+    isAi: true // Penanda untuk memisahkan kategori
+  },
+  {
+    id: 'ai-3',
+    title: 'Batik Classifier',
+    category: 'Machine Learning Model',
+    imageName: 'Screenshot 2026-02-01 054636.png', // Hanya nama file
+    link: 'https://colab.research.google.com/drive/1FBy8Jy-Wp2OwmzfbghdSZzN106Kcqfns?usp=sharing',
+    isAi: true // Penanda untuk memisahkan kategori
+  },
+  {
+    id: 'ai-4',
+    title: 'Predict Engagement Level Gaming',
+    category: 'Machine Learning Model',
+    imageName: 'Screenshot 2026-02-01 054928.png', // Hanya nama file
+    link: 'https://colab.research.google.com/drive/17WEjs7MaqLZQzhqjLRHX3WLzVZSANRxA?usp=sharing',
+    isAi: true // Penanda untuk memisahkan kategori
+  },
   // Tambahkan proyek baru Anda di sini
 ];
 // --------------------

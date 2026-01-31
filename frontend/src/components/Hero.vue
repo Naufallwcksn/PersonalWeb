@@ -4,7 +4,7 @@
     <div class="md:w-1/2 space-y-6 text-center md:text-left animate-slide-in-left">
       <div class="flex items-center justify-center md:justify-start space-x-2">
         <h1 class="text-5xl font-bold text-brand-text">Hello! I Am</h1>
-        <span class="bg-yellow-100 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full">AI/ML Engineer</span>
+        <span class="bg-yellow-100 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full">Data Scientist</span>
       </div>
       <h2 class="text-6xl font-extrabold text-brand-text leading-tight">Ekananda Naufal Arif Wicaksana</h2>
       <p class="text-brand-subtext max-w-md mx-auto md:mx-0">
